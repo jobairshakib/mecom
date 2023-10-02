@@ -65,7 +65,7 @@
                                             </div>
                                             <div class="col-sm-9 text-secondary">
                                                 <input type="text" name="username" class="form-control"
-                                                    value="{{ $adminData->username }}" />
+                                                    value="{{ $adminData->username }}" disabled/>
                                             </div>
                                         </div>
                                         <div class="row mb-3">

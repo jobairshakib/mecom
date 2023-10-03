@@ -30,7 +30,7 @@ Route::middleware(['auth','role:admin'])->group(function (){
 
     Route::get('/admin/profile',[AdminController::class,'adminProfile'])->name('admin.profile');
     Route::post('/admin/profile/store',[AdminController::class,'adminProfileStore'])->name('admin.profile.store');
-    Route::post('/admin/change/password',[AdminController::class,'adminChangePassword'])->name('admin.change.password');
+    Route::get('/admin/change/password',[AdminController::class,'adminChangePassword'])->name('admin.change.password');
     Route::post('/admin/update/password',[AdminController::class,'adminUpdatePassword'])->name('update.password');
 
     Route::resource('brands',BrandController::class);

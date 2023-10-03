@@ -19,10 +19,19 @@
                         <div class="col-lg-8">
                             <div class="card">
                                 <div class="card-body">
-                                    <form method="post" action="{{route('admin.profile.store')}}" enctype="multipart/form-data">
+                                    <form method="post" action="{{route('update.password')}}" enctype="multipart/form-data">
                                         @csrf
                                         {{-- {{ method_field('PUT') }} --}}
-                                       
+
+                                        @if(session('status'))
+                                            <div class="alert alert-success" role="alert">
+                                                {{session('status')}}
+                                            </div>
+                                        @elseif(session('error'))
+                                        <div class="alert alert-danger" role="alert">
+                                            {{session('error')}}
+                                        </div>
+                                        @endif
                                         <div class="row mb-3">
                                             <div class="col-sm-3">
                                                 <h6 class="mb-0">Old Password</h6>
@@ -30,8 +39,14 @@
                                             <div class="col-sm-9 text-secondary">
                                                 <input type="password" class="form-control"
                                                     name="old_password"
+                                                    @error('old_password') is-invalid
+                                                        
+                                                    @enderror
                                                     id="current_password" 
                                                     placeholder="Old Password" />
+                                                    @error('old_password')
+                                                        <span class="text-danger">{{$message}}</span>
+                                                    @enderror
                                             </div>
                                         </div>
                                         <div class="row mb-3">
@@ -41,8 +56,14 @@
                                             <div class="col-sm-9 text-secondary">
                                                 <input type="password" class="form-control"
                                                     name="new_password"
+                                                    @error('new_password') is-invalid
+                                                        
+                                                    @enderror
                                                     id="new_password" 
                                                     placeholder="New Password" />
+                                                    @error('new_password')
+                                                        <span class="text-danger">{{$message}}</span>
+                                                    @enderror
                                             </div>
                                         </div>
                                         <div class="row mb-3">
@@ -54,6 +75,7 @@
                                                     name="new_password_confirmation"
                                                     id="new_password_confirmation" 
                                                     placeholder="Confirm New Password" />
+                                                    
                                             </div>
                                         </div>
                                        
